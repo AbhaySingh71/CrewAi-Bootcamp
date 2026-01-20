@@ -12,8 +12,9 @@ class ResearchAndBlogCrew():
     tasks: List[Task]
 
     # define the paths of conif files
-    agents_config = "src/research_and_blog_crew/config/agents.yaml"
-    tasks_config = "src/research_and_blog_crew/config/tasks.yaml"
+    agents_config = "config/agents.yaml"
+    tasks_config = "config/tasks.yaml"
+
     
     # ====== Define Agents ======
     @agent
@@ -36,10 +37,11 @@ class ResearchAndBlogCrew():
             config = self.tasks_config["report_task"]   
         )
         
+    @task
     def blog_writing_task(self) -> Task:
         return Task(
             config = self.tasks_config["blog_writing_task"],
-            outut_file = "blogs/blogs.md"
+            output_file = "blogs/blogs.md"
         )         
         
     # ====== Define Crew ======
@@ -48,6 +50,6 @@ class ResearchAndBlogCrew():
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
-            Process=Process.sequential,
-            verbsose=True
+            process=Process.sequential,
+            verbose=True
         )    
