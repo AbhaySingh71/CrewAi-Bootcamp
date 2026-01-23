@@ -67,6 +67,112 @@ CrewAI supports **multiple LLM providers**, but OpenAI is the default.
 
 ---
 
+<h2>✅ Installation Successful</h2>
+<p>🎉 <strong>Installation successful!</strong> You’re ready to create your first CrewAI project.</p>
+
+<hr />
+
+<h2>🛠️ Creating a CrewAI Project</h2>
+<p>
+We recommend using the <strong>YAML template scaffolding</strong> for a structured and scalable approach
+to defining agents and tasks.
+</p>
+
+<h3>1️⃣ Generate Project Scaffolding</h3>
+<p>Use the CrewAI CLI to create a new project:</p>
+
+<pre><code>crewai create crew &lt;your_project_name&gt;</code></pre>
+
+<p>This command generates the following project structure:</p>
+
+<pre><code>my_project/
+├── .gitignore
+├── knowledge/
+├── pyproject.toml
+├── README.md
+├── .env
+└── src/
+    └── my_project/
+        ├── __init__.py
+        ├── main.py
+        ├── crew.py
+        ├── tools/
+        │   ├── custom_tool.py
+        │   └── __init__.py
+        └── config/
+            ├── agents.yaml
+            └── tasks.yaml
+</code></pre>
+
+<h3>2️⃣ Customize Your Project</h3>
+
+<p>Your project includes the following essential files and directories:</p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>File / Directory</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>agents.yaml</code></td>
+      <td>Define AI agents and their roles</td>
+    </tr>
+    <tr>
+      <td><code>tasks.yaml</code></td>
+      <td>Define tasks and agent workflows</td>
+    </tr>
+    <tr>
+      <td><code>.env</code></td>
+      <td>Store API keys and environment variables</td>
+    </tr>
+    <tr>
+      <td><code>main.py</code></td>
+      <td>Entry point for running the project</td>
+    </tr>
+    <tr>
+      <td><code>crew.py</code></td>
+      <td>Crew orchestration and coordination</td>
+    </tr>
+    <tr>
+      <td><code>tools/</code></td>
+      <td>Custom tools for agents</td>
+    </tr>
+    <tr>
+      <td><code>knowledge/</code></td>
+      <td>Knowledge base for retrieval and context</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Next steps:</strong></p>
+<ul>
+  <li>Edit <code>agents.yaml</code> and <code>tasks.yaml</code> to define your crew’s behavior.</li>
+  <li>Keep sensitive information like API keys inside the <code>.env</code> file.</li>
+  <li>Add custom logic or tools in the <code>tools/</code> directory.</li>
+</ul>
+
+<h3>3️⃣ Install Dependencies</h3>
+
+<p>Before running your crew, install the project dependencies:</p>
+
+<pre><code>crewai install</code></pre>
+
+<p>If you need to install additional packages:</p>
+
+<pre><code>uv add &lt;package-name&gt;</code></pre>
+
+<h3>4️⃣ Run Your Crew 🚀</h3>
+
+<p>Run the following command from the <strong>root directory</strong> of your project:</p>
+
+<pre><code>crewai run</code></pre>
+
+<p>🎯 Your CrewAI agents will now start executing their defined tasks.</p>
+
+
 ## 🧩 Core Concepts
 
 ### 1. Agent
