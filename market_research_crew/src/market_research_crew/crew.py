@@ -2,10 +2,12 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
+from crewai.llm import LLM
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool, SeleniumScrapingTool
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 # create the tools for the agents
 web_search_tool = SerperDevTool()
@@ -86,20 +88,22 @@ class MarketResearchCrew():
     @task
     def product_strategy_task(self) -> Task:
         return Task(
-            config=self.tasks_config["market_research_task"],
+            config=self.tasks_config["product_strategy_task"],
             context=[self.market_research_task(),
                      self.competitive_intelligence_task(),
-                     self.customer_insights_task]
+                     self.customer_insights_task()
+                     ]
         )       
         
     @task
     def business_analyst_task(self) -> Task:
         return Task(
-            config=self.tasks_config["market_research_task"],
+            config=self.tasks_config["business_analyst_task"],
             context=[self.market_research_task(),
                      self.competitive_intelligence_task(),
-                     self.customer_insights_task,
-                     self.product_strategy_task()],
+                     self.customer_insights_task(),
+                     self.product_strategy_task()
+                     ],
             output_file="reports/report.md"
         )        
                 
@@ -109,5 +113,6 @@ class MarketResearchCrew():
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
-            process=Process.sequential
+            process=Process.sequential,
+            verbose=True
         )            
